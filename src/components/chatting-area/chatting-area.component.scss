@@ -1,0 +1,20 @@
+.chatting-area {
+    height: 660px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 40px auto 40px;
+
+    & .title-course-wrapper {
+        background-color: aqua;
+        text-align: center;
+        height: 40px;
+
+        & .title-chatting-course{
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
+
+    
+}

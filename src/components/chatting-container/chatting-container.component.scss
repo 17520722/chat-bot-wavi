@@ -1,0 +1,24 @@
+.chatting-container-wrapper {
+    background-color: rgb(8,95,99);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto 80px;
+    grid-template-rows: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    & .input-message {
+        border: 1px solid black;
+        border-radius: 20px;
+        margin-left: 5px;
+    }
+
+    & .btn-input-message {
+        width: 40px;
+        margin: auto;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: rgb(255,89,89);
+    }
+}
