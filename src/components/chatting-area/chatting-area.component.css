@@ -8,6 +8,7 @@
 
 .chat-field {
   height: 100%;
+  overflow-y: auto;
 }
 
 .title-course-wrapper {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-message-bot',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message-bot.component.css']
 })
 export class MessageBotComponent implements OnInit {
+
+  @Input() content:string = '';
 
   constructor() { }
 
