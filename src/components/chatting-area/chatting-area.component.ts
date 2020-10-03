@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
 
 @Component({
   selector: 'app-chatting-area',
   templateUrl: './chatting-area.component.html',
   styleUrls: ['./chatting-area.component.css']
 })
-export class ChattingAreaComponent implements OnInit {
+export class ChattingAreaComponent implements OnInit, AfterViewChecked {
+  //Tham chiếu biến DOM #scrollMe với myScrollContainer qua ElementRef 
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   inputMessage = '';
+
+  //data dem0
   messageList = [
     {
       isBot: false,
@@ -37,13 +41,27 @@ export class ChattingAreaComponent implements OnInit {
       isBot: true,
       message: 'This is demo text dmosa  das dad  fe ggeg adde casc  awcwac cacaww wa w c aw  cacaca a'
     },
+    {
+      isBot: false,
+      message: 'This is the message of user'
+    },
+    {
+      isBot: true,
+      message: 'This is demo text dmosa  das dad  fe ggeg adde casc  awcwac cacaww wa w c aw  cacaca a'
+    },
   ];
-
+/////////////
   constructor() { }
+
+  //Khởi tạo cho interface
+  ngAfterViewChecked(): void {
+    this.scrollToBottom();
+  }
 
   ngOnInit() {
   }
 
+  //Hàm xủ lý sự kiện người dùng gửi tin nhắn đến bot
   sendMessageArea(content:string) {
     let messObj = {
       isBot: false,
@@ -51,5 +69,12 @@ export class ChattingAreaComponent implements OnInit {
     };
 
     this.messageList.push(messObj);
+  }
+
+  scrollToBottom() {
+    //Scroll tin nhắn lên trên bằng với chiều cao của khối chat-field
+    try {
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    } catch(err) { }  
   }
 }

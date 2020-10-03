@@ -14,6 +14,8 @@ export class ChattingContainerComponent implements OnInit {
 
   ngOnInit() {}
 
+  //Hàm xử lý sự kiện khi người dùng gửi tin nhắn
+  //Hàm này sẽ emit sự kiện lên component cha (chatting-area)
   sendInput() {
     if (this.inputMessage != '') {
       this.sendMessage.emit(this.inputMessage);

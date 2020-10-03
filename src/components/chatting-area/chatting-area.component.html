@@ -2,14 +2,17 @@
   <div class="title-course-wrapper">
     <label class="title-chatting-course">Lập trình hướng đối tượng</label>
   </div>
-  <div id="chat-field" 
+  <!--Thẻ div bọc toàn bộ tin nhắn của người dùng và bot-->
+  <div id="chat-field" #scrollMe
         class="chat-field" 
         style="background-color: whitesmoke;">
     <ul>
       <li *ngFor="let messObj of messageList">
+        <!--nếu tin nhắn do bot gửi thì dùng thẻ app-message-bot ngược lại thì app-message-user-->
         <ng-container *ngIf="messObj.isBot; else elseTemplate">
           <app-message-bot [content]="messObj.message"></app-message-bot>
         </ng-container>
+        <!--Template điều kiện ngược lại (nếu người gửi là user)-->
         <ng-template #elseTemplate>
           <app-message-user [content]="messObj.message"></app-message-user>
         </ng-template>
@@ -17,6 +20,7 @@
     </ul>
 
   </div>
+  <!--Vùng nhập tin nhắn gửi cho bot-->
   <div>
     <app-chatting-container (sendMessage)="sendMessageArea($event)"></app-chatting-container>
   </div>
