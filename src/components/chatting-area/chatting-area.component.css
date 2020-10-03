@@ -1,0 +1,25 @@
+.chatting-area {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 40px calc(100% - 90px) 50px;
+}
+
+.chat-field {
+  height: 100%;
+}
+
+.title-course-wrapper {
+  display: flex;
+  background-color: aqua;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.title-chatting-course {
+  font-size: 18px;
+  font-weight: 500;
+
+}

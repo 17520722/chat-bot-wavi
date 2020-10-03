@@ -1,0 +1,33 @@
+.chatting-container-wrapper {
+  background-color: rgb(8, 95, 99);
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: auto 80px;
+  grid-template-rows: auto;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.input-message {
+  border: none;
+  outline: none;
+  font-size: 0.8rem;
+  border-radius: 15px;
+  margin-left: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+input.input-message:focus {
+  outline: none;
+}
+
+.btn-input-message {
+  width: 40px;
+  margin: auto;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: rgb(255, 89, 89);
+}
