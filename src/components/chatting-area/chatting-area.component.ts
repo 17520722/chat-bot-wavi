@@ -50,7 +50,6 @@ export class ChattingAreaComponent implements OnInit, AfterViewChecked {
       message: 'This is demo text dmosa  das dad  fe ggeg adde casc  awcwac cacaww wa w c aw  cacaca a'
     },
   ];
-/////////////
   constructor() { }
 
   //Khởi tạo cho interface
@@ -62,11 +61,22 @@ export class ChattingAreaComponent implements OnInit, AfterViewChecked {
   }
 
   //Hàm xủ lý sự kiện người dùng gửi tin nhắn đến bot
-  sendMessageArea(content:string) {
-    let messObj = {
-      isBot: false,
-      message: content
-    };
+  //Nhận content là một message Object
+  sendMessageArea(content) {
+    let messObj;
+
+    if (!content['isBot']){
+      messObj = {
+        isBot: false,
+        message: content['message']
+      };
+    }
+    else{
+      messObj = {
+        isBot: true,
+        message: content['message']
+      };
+    }
 
     this.messageList.push(messObj);
   }
