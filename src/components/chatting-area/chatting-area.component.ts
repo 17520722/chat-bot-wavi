@@ -3,7 +3,7 @@ import { Component, OnInit, ElementRef, ViewChild, AfterViewChecked } from '@ang
 @Component({
   selector: 'app-chatting-area',
   templateUrl: './chatting-area.component.html',
-  styleUrls: ['./chatting-area.component.css']
+  styleUrls: ['./chatting-area.component.css'],
 })
 export class ChattingAreaComponent implements OnInit, AfterViewChecked {
   //Tham chiếu biến DOM #scrollMe với myScrollContainer qua ElementRef 
@@ -50,7 +50,8 @@ export class ChattingAreaComponent implements OnInit, AfterViewChecked {
       message: 'This is demo text dmosa  das dad  fe ggeg adde casc  awcwac cacaww wa w c aw  cacaca a'
     },
   ];
-  constructor() { }
+
+  constructor() {}
 
   //Khởi tạo cho interface
   ngAfterViewChecked(): void {

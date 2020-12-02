@@ -38,11 +38,18 @@ export class ChattingContainerComponent implements OnInit {
   //Lây bot message từ Service
   getBotMessageAPI() {
     this.learnService.getBotMessage(this.inputMessage).subscribe(data => {
+      var messIndex = Math.floor(Math.random() * (data['messageContent'].length) - 0.00001);
+
+      if (messIndex < 0) {
+        messIndex = -messIndex;
+      }
+
       let messObj = {
-        message: data['messageContent'],
+        message: data['messageContent'][messIndex],
         isBot: true
       }
 
+      console.log(messIndex);
       console.log(messObj);
       this.sendMessage.emit(messObj);
     }, err => console.log(err));
