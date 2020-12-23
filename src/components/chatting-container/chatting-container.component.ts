@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { LearnService } from '../../services/learn.service';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-chatting-container',
@@ -38,20 +39,35 @@ export class ChattingContainerComponent implements OnInit {
   //Lây bot message từ Service
   getBotMessageAPI() {
     this.learnService.getBotMessage(this.inputMessage).subscribe(data => {
-      var messIndex = Math.floor(Math.random() * (data['messageContent'].length) - 0.00001);
+      var arrMessage = data['messageContent'];
 
-      if (messIndex < 0) {
-        messIndex = -messIndex;
+      if (data['multiMess'] == 'on'){
+        for (var messIndex = 0; messIndex < arrMessage.length; messIndex++) {
+          
+          let messObj = {
+            message: arrMessage[messIndex],
+            isBot: true,
+          } 
+
+          console.log(messObj);
+          this.sendMessage.emit(messObj);
+        }
+      } else {
+        var messIndex = Math.floor(Math.random() * (arrMessage.length) - 0.00001);
+
+        if (messIndex < 0) {
+          messIndex = -messIndex;
+        }
+        
+        let messObj = {
+          message: arrMessage[messIndex],
+          isBot: true
+        }
+  
+        console.log(messIndex);
+        console.log(messObj);
+        this.sendMessage.emit(messObj);
       }
-
-      let messObj = {
-        message: data['messageContent'][messIndex],
-        isBot: true
-      }
-
-      console.log(messIndex);
-      console.log(messObj);
-      this.sendMessage.emit(messObj);
     }, err => console.log(err));
   }
 }

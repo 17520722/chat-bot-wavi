@@ -4,7 +4,12 @@
       <img src="assets/avt-bot.png" alt="bot image" class="bot-image">
     </div>
     <div class="bot-message-wrapper">
-      <label class="lb-bot-message">{{ content }}</label>
+      <ng-container *ngIf="isImg;else elsetemplate">
+        <img src="{{content}}" alt="image"/>
+      </ng-container>
+      <ng-template #elsetemplate>
+        <label class="lb-bot-message">{{ content }}</label>
+      </ng-template>
     </div>
   </div>
 </div>

@@ -9,9 +9,15 @@ export class MessageBotComponent implements OnInit {
 
   @Input() content:string = '';
 
+  isImg: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+    if (this.content.indexOf('.jpg' || '.png') != -1) {
+      this.isImg = true;
+    }
+
   }
 
 }
