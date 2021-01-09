@@ -40,8 +40,7 @@ export class ChattingContainerComponent implements OnInit {
   getBotMessageAPI() {
     this.learnService.getBotMessage(this.inputMessage).subscribe(data => {
       var arrMessage = data['messageContent'];
-
-      if (data['multiMess'] == 'on'){
+      
         for (var messIndex = 0; messIndex < arrMessage.length; messIndex++) {
           
           let messObj = {
@@ -52,22 +51,6 @@ export class ChattingContainerComponent implements OnInit {
           console.log(messObj);
           this.sendMessage.emit(messObj);
         }
-      } else {
-        var messIndex = Math.floor(Math.random() * (arrMessage.length) - 0.00001);
-
-        if (messIndex < 0) {
-          messIndex = -messIndex;
-        }
-        
-        let messObj = {
-          message: arrMessage[messIndex],
-          isBot: true
-        }
-  
-        console.log(messIndex);
-        console.log(messObj);
-        this.sendMessage.emit(messObj);
-      }
     }, err => console.log(err));
   }
 }
