@@ -4,11 +4,18 @@
       <img src="assets/avt-bot.png" alt="bot image" class="bot-image">
     </div>
     <div class="bot-message-wrapper">
-      <ng-container *ngIf="isImg;else elsetemplate">
+      <ng-container *ngIf="isImg;else link">
         <img src="{{content}}" alt="image"/>
       </ng-container>
-      <ng-template #elsetemplate>
-        <label class="lb-bot-message">{{ content }}</label>
+      <ng-template #link>
+        <ng-container *ngIf="isLink;else normalText">
+          <div class="lb-bot-message">
+            <a href="{{content}}" target="_blank">{{content}}</a>
+          </div>    
+        </ng-container>
+      </ng-template>
+      <ng-template #normalText>
+        <div class="lb-bot-message">{{ content }}</div>
       </ng-template>
     </div>
   </div>
