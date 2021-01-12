@@ -1,16 +1,20 @@
 <div class="chatting-area">
   <div class="title-course-wrapper">
-    <label class="title-chatting-course">Lập trình hướng đối tượng</label>
+    <label class="title-chatting-course">Chatbot hỗ trợ học lập trình hướng đối tượng</label>
   </div>
   <!--Thẻ div bọc toàn bộ tin nhắn của người dùng và bot-->
   <div id="chat-field" #scrollMe
-        class="chat-field" 
-        style="background-color: whitesmoke;">
+        class="chat-field">
+    <div class="introbot">
+      <img src="../../assets/avt-bot.png" alt="">
+      <p>Đại học quốc gia TP.HCM - Đại học Công nghệ Thông tin</p>
+      <p>Chatbot hỗ trợ học lập trình hướng đối tượng</p>
+    </div>
     <ul>
       <li *ngFor="let messObj of messageList">
         <!--nếu tin nhắn do bot gửi thì dùng thẻ app-message-bot ngược lại thì app-message-user-->
         <ng-container *ngIf="messObj.isBot; else elseTemplate">
-          <app-message-bot [content]="messObj.message"></app-message-bot>
+          <app-message-bot [content]="messObj.message" [isShowAvatar]="messObj.isEnd" [isRes]="messObj.isRes" (isClickMessage)="resAuto($event)"></app-message-bot>
         </ng-container>
         <!--Template điều kiện ngược lại (nếu người gửi là user)-->
         <ng-template #elseTemplate>

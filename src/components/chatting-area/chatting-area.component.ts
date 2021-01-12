@@ -14,41 +14,12 @@ export class ChattingAreaComponent implements OnInit, AfterViewChecked {
   //data dem0
   messageList = [
     {
-      isBot: false,
-      message: 'This is the message of user'
-    },
-    {
       isBot: true,
-      message: 'This is the message of bot'
+      message: 'chào bạn!',
+      isEnd: true,
+      isRes: false
     },
-    {
-      isBot: true,
-      message: 'This is demo text dmosa  das dad  fe ggeg adde casc  awcwac cacaww wa w c aw  cacaca a'
-    },
-    {
-      isBot: false,
-      message: 'This is the message of user'
-    },
-    {
-      isBot: true,
-      message: 'This is demo text dmosa  das dad  fe ggeg adde casc  awcwac cacaww wa w c aw  cacaca a'
-    },
-    {
-      isBot: false,
-      message: 'This is the message of user'
-    },
-    {
-      isBot: true,
-      message: 'This is demo text dmosa  das dad  fe ggeg adde casc  awcwac cacaww wa w c aw  cacaca a'
-    },
-    {
-      isBot: false,
-      message: 'This is the message of user'
-    },
-    {
-      isBot: true,
-      message: 'This is demo text dmosa  das dad  fe ggeg adde casc  awcwac cacaww wa w c aw  cacaca a'
-    },
+    
   ];
 
   constructor() {}
@@ -69,17 +40,24 @@ export class ChattingAreaComponent implements OnInit, AfterViewChecked {
     if (!content['isBot']){
       messObj = {
         isBot: false,
-        message: content['message']
+        message: content['message'],
+        isEnd: content['isEnd']
       };
     }
     else{
       messObj = {
         isBot: true,
-        message: content['message']
+        message: content['message'],
+        isEnd: content['isEnd'],
+        isRes: content['isRes']
       };
     }
 
     this.messageList.push(messObj);
+  }
+
+  resAuto(event) {
+    this.sendMessageArea(event);
   }
 
   scrollToBottom() {

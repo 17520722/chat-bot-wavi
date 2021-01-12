@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
 import { RecommendQuestionComponent } from 'src/components/recommend-question/recommend-question.component';
 import { TextRecommendComponent } from 'src/components/text-recommend/text-recommend.component';
@@ -25,7 +26,7 @@ import { MessageUserComponent } from 'src/components/message-user/message-user.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    BrowserAnimationsModule,
     FormsModule,  
     HttpClientModule
   ],

@@ -29,11 +29,16 @@ export class ChattingContainerComponent implements OnInit {
         isBot: false
       }
 
-      this.sendMessage.emit(messObj);  
+      this.sendMessage.emit(messObj); 
       this.getBotMessageAPI();
 
       this.inputMessage = '';
     }
+  }
+
+  getAutoFillRes(message: string) {
+    let str = message.split('[res]');
+    return str[1];
   }
 
   //Lây bot message từ Service
@@ -42,12 +47,47 @@ export class ChattingContainerComponent implements OnInit {
       var arrMessage = data['messageContent'];
       
         for (var messIndex = 0; messIndex < arrMessage.length; messIndex++) {
-          
-          let messObj = {
-            message: arrMessage[messIndex],
-            isBot: true,
-          } 
+          let messObj;
 
+          if (messIndex >= arrMessage.length - 1) {
+            console.log();
+
+            if (String(arrMessage[messIndex]).includes('[res]')) {
+              
+              messObj = {
+                message: this.getAutoFillRes(arrMessage[messIndex]),
+                isBot: true,
+                isEnd: true,
+                isRes: true
+              } 
+            }
+            else {
+              messObj = {
+                message: arrMessage[messIndex],
+                isBot: true,
+                isEnd: true,
+                isRes: false
+              } 
+            }
+          } else {
+            console.log(String(arrMessage[messIndex]).includes('[res]'));
+            if (String(arrMessage[messIndex]).includes('[res]')) {
+              messObj = {
+                message: this.getAutoFillRes(arrMessage[messIndex]),
+                isBot: true,
+                isEnd: false,
+                isRes: true
+              } 
+            }
+            else {
+              messObj = {
+                message: arrMessage[messIndex],
+                isBot: true,
+                isEnd: false,
+                isRes: false
+              } 
+            }
+          }
           console.log(messObj);
           this.sendMessage.emit(messObj);
         }

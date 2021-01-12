@@ -1,14 +1,14 @@
 <div style="display: block;">
   <div class="bot-mess-container">
     <div class="avatar-container">
-      <img src="assets/avt-bot.png" alt="bot image" class="bot-image">
+      <img src="assets/avt-bot.png" alt="bot image" class="bot-image" *ngIf="isShowAvatar">
     </div>
-    <div class="bot-message-wrapper">
+    <div class="bot-message-wrapper" [@trigger]="state" [ngStyle]="isRes? styleRes : {}" (click)="onClickMessage()">
       <ng-container *ngIf="isImg;else elsetemplate">
         <img src="{{content}}" alt="image"/>
       </ng-container>
       <ng-template #elsetemplate>
-        <label class="lb-bot-message">{{ content }}</label>
+        <label class="lb-bot-message" [ngStyle]="isRes? styleRes : {}">{{ content }}</label>
       </ng-template>
     </div>
   </div>
