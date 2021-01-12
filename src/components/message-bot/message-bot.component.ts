@@ -42,6 +42,7 @@ export class MessageBotComponent implements OnInit, AfterViewInit{
   state = 'opacity';
 
   isImg: boolean = false;
+  isLink: boolean = false;
 
   constructor(private botSrv: LearnService) { }
 
@@ -50,8 +51,12 @@ export class MessageBotComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit() {
-    if (this.content.indexOf('.jpg' || '.png') != -1) {
+    if (this.content.indexOf('.jpg' || '.png') != -1 && 
+        this.content.indexOf('http' || 'https') != -1) {
       this.isImg = true;
+    }
+    else if (this.content.indexOf('http' || 'https') != -1){
+      this.isLink = true;
     }
   }
 

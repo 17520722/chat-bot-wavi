@@ -24,7 +24,6 @@
 }
 
 .lb-bot-message {
-  white-space: pre-wrap;
   word-wrap: break-word;
   font-size: 1rem;
   padding-left: 5px;
