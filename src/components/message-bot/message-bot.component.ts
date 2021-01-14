@@ -51,11 +51,11 @@ export class MessageBotComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit() {
-    if (this.content.indexOf('.jpg' || '.png') != -1 && 
+    if ((this.content.indexOf('.jpg') != -1 || this.content.indexOf('.png') != -1) && 
         this.content.indexOf('http' || 'https') != -1) {
       this.isImg = true;
     }
-    else if (this.content.indexOf('http' || 'https') != -1){
+    else if (this.content.indexOf('http') != -1 || this.content.indexOf('https') != -1){
       this.isLink = true;
     }
   }
